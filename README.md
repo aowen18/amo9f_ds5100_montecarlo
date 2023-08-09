@@ -63,7 +63,7 @@ a.perm_count()
 ```
 
 ## API Description
-
+```
 NAME
     Montecarlo.montecarlo
 
@@ -226,7 +226,4 @@ CLASSES
      |  
      |  __weakref__
      |      list of weak references to the object (if defined)
-
-FILE
-    /Users/alexaowen/Documents/Grad School/Summer 2023/DS 5001/amo9f_ds5100_montecarlo/Montecarlo/montecarlo.py
-
+```
