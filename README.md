@@ -17,7 +17,7 @@ pip install montecarlo
 ### Import
 
 ```
-from Montecarlo import montecarlo
+from montecarlo import montecarlo
 ```
 
 **or**
