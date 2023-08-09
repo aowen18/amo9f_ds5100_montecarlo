@@ -26,6 +26,13 @@ from Montecarlo import montecarlo
 from montecarlo import Die, Game, Analyzer
 ```
 
+### Necessary Packages 
+```
+import pandas as pd
+import numpy as mp
+import random
+```
+
 ### Create Die
 
 ```
