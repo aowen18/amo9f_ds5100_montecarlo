@@ -29,7 +29,7 @@ from montecarlo import Die, Game, Analyzer
 ### Necessary Packages 
 ```
 import pandas as pd
-import numpy as mp
+import numpy as np
 import random
 ```
 
