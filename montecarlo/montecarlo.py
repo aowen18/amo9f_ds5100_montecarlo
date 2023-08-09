@@ -5,9 +5,6 @@ import random
 class Die:
     '''
     A class representing a die.
-
-    Attributes:
-        _die_df (pd.DataFrame): A private data frame containing the faces and their weights.
     '''
     def __init__(self, face):
         '''
@@ -70,17 +67,13 @@ class Die:
         Returns a copy of the private die data frame containing faces and weights.
 
         Returns:
-            pd.DataFrame: A copy of the private die data frame.
+            pd.DataFrame: A die data frame.
         """
         return self._die_df.copy()
 
 class Game:
     '''
      A class representing a game with similar dice.
-
-    Attributes:
-        _dice_list (list): A list of similar dice (Die objects).
-        _play_df (pd.DataFrame): A private data frame to store the results of the game.
     '''
     def __init__(self, _dice_list):
         '''
@@ -114,7 +107,7 @@ class Game:
             form (str, optional): The form of the data frame to return ('wide' or 'narrow'). Defaults to 'wide'.
 
         Returns:
-            pd.DataFrame: A copy of the private play data frame in the specified form.
+            pd.DataFrame: A play data frame in the specified form.
 
         Raises:
             ValueError: If the user passes an invalid option for narrow or wide.
