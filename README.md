@@ -1,1 +1,1 @@
-# Alexa Owen DS 5100 Monte Carlo Project
+# Alexa Owen DS 5100 Monte Carlo Simulator
