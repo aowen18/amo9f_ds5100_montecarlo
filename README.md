@@ -137,9 +137,6 @@ CLASSES
      |  
      |  A class representing a die.
      |  
-     |  Attributes:
-     |      _die_df (pd.DataFrame): A private data frame containing the faces and their weights.
-     |  
      |  Methods defined here:
      |  
      |  __init__(self, face)
@@ -176,7 +173,7 @@ CLASSES
      |      Returns a copy of the private die data frame containing faces and weights.
      |      
      |      Returns:
-     |          pd.DataFrame: A copy of the private die data frame.
+     |          pd.DataFrame: A die data frame.
      |  
      |  ----------------------------------------------------------------------
      |  Data descriptors defined here:
@@ -220,7 +217,7 @@ CLASSES
      |          form (str, optional): The form of the data frame to return ('wide' or 'narrow'). Defaults to 'wide'.
      |      
      |      Returns:
-     |          pd.DataFrame: A copy of the private play data frame in the specified form.
+     |          pd.DataFrame: A play data frame in the specified form.
      |      
      |      Raises:
      |          ValueError: If the user passes an invalid option for narrow or wide.
