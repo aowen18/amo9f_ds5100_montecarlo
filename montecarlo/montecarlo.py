@@ -29,6 +29,7 @@ class Die:
         weights = np.ones(len(face))
 
         self._die_df = pd.DataFrame(weights.T, index=face)
+        self._die_df = self._die_df.rename( columns = {0: 'Weights'})
 
     def adj_weights(self, face, new_weight):
         '''
@@ -48,8 +49,7 @@ class Die:
         if not isinstance(new_weight, (int,float)):
             raise TypeError("Weight must be an int or float value")
 
-        self._die_df[0][face] = new_weight
-        self._die_df = self._die_df.rename(columns= {0:'Weights'})
+        self._die_df['Weights'][face] = new_weight
         return self._die_df
 
     def die_roll(self, roll = 1):
@@ -126,8 +126,7 @@ class Game:
             return self._play_df.copy()
 
         else:
-            nar_df = self._play_df.melt(ignore_index=False).reset_index()
-            nar_df = nar_df.rename(columns = {'index': 'Roll', 'variable': 'Die', 'value': 'Value'})
+            nar_df = self._play_df.melt(ignore_index=False).reset_index().set_index(['index', 'variable'])
             return nar_df.copy()
 
 
@@ -184,8 +183,8 @@ class Analyzer:
             pd.DataFrame: A data frame of results with distinct combinations as MultiIndex and count as a column.
         '''
         combo = self.game.recent_play()
-        combo = np.sort(combo.values, axis = 1)
-        combo_df = pd.DataFrame(combo).value_counts().reset_index()
+        combo = pd.DataFrame(np.sort(combo.values, axis = 1), columns = combo.columns)
+        combo_df = combo.value_counts().to_frame().rename(columns = {0:'count'})
         return combo_df
 
     def perm_count (self):
@@ -196,21 +195,5 @@ class Analyzer:
             pd.DataFrame: A data frame of results with distinct permutations as MultiIndex and count as a column.
         '''
         perm = self.game.recent_play()
-        perm = perm.value_counts().reset_index()
+        perm = perm.value_counts().to_frame().rename(columns = {0:'count'})
         return perm
-
-d= Die(np.array([1,2,3,4,5,6]))
-print(d.adj_weights(4, 10))
-print(d.die_roll(10))
-print(d.show_df())
-
-
-game = Game([d,d,d])
-print(game.play(10))
-print(game.recent_play())
-
-a = Analyzer(game)
-print(a.jackpot())
-print(a.face_counts())
-print(a.combo_count())
-print(a.perm_count())
